@@ -358,6 +358,8 @@ def load(filename, mask=None, text=False, vol=True):
     elif file_type(filename) == 'binary':
         x = pd.read_pickle(filename)
         x = x.to_numpy()
+    elif isinstance(filename, pd.DataFrame):
+        x = filename.copy(deep=True)
 
     return x
 
